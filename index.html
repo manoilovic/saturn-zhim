@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080809">
+<meta name="description" content="Saturn Жим — бесплатный калькулятор максимума в жиме лёжа по формуле Эпли. Таблица на 1–20 повторений, без рекламы и регистрации.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Saturn Жим">
+<meta property="og:title" content="Saturn Жим — твой максимум">
+<meta property="og:description" content="Введи вес и повторы. Узнай расчётный максимум и вес на 1–20 повторений. Бесплатно и без рекламы.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://manoilovic.github.io/saturn-zhim/">
+<meta property="og:image" content="https://manoilovic.github.io/saturn-zhim/icon-512.png">
+<title>Saturn Жим — твой максимум</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="stylesheet" href="./app.css">
+<script type="module" src="./app.js"></script>
+</head>
+<body>
+<main class="app">
+<div class="topbar">
+<button class="install-trigger" id="install-trigger" type="button" aria-haspopup="dialog" aria-controls="install-dialog"><span id="install-label">Добавить на экран iPhone</span><span class="plus" aria-hidden="true">+</span></button>
+<nav class="contact"><a href="https://t.me/gevork_saturn" target="_blank" rel="noopener noreferrer">Написать разработчику <span aria-hidden="true">↗</span></a></nav>
+</div>
+<header class="hero">
+<div><p class="brand">SATURN</p><h1>Жим</h1><p class="subtitle">Твой максимум</p></div>
+<div class="app-symbol" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M14 15v34M50 15v34M14 32h36M6 23v18M58 23v18" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg></div>
+</header>
+<section class="panel result" aria-label="Одноповторный максимум">
+<div class="result-grid">
+<div class="ring" id="result-ring"><div><strong>1ПМ</strong><span>оценка</span></div></div>
+<div class="result-copy"><h2>Максимум</h2><p class="maximum" id="maximum">— <span>кг</span></p><p class="approach" id="approach">Введи свой подход</p></div>
+</div>
+<p class="result-note">Одно повторение · по формуле Эпли</p>
+</section>
+<form id="calculator" novalidate>
+<div class="panel inputs">
+<h2>Твой подход</h2>
+<div class="fields">
+<div><label class="field" for="weight"><span>Вес штанги</span><input id="weight" name="weight" type="text" inputmode="decimal" autocomplete="off" enterkeyhint="next" value="80" aria-describedby="weight-error"><b aria-hidden="true">кг</b></label><p class="field-error" id="weight-error" hidden>Введи вес больше 0 и не больше 1000 кг.</p></div>
+<div><label class="field" for="repetitions"><span>Количество повторений</span><input id="repetitions" name="repetitions" type="text" inputmode="numeric" autocomplete="off" enterkeyhint="done" value="5" aria-describedby="repetitions-error"></label><p class="field-error" id="repetitions-error" hidden>Введи целое число от 1 до 30.</p></div>
+</div>
+</div>
+<button class="calculate" type="submit">Рассчитать максимум</button>
+</form>
+<p class="status" id="calculation-status" role="status" aria-live="polite"><span class="dot" aria-hidden="true"></span><span id="status-text">Вес и повторы — всё, что нужно</span></p>
+<section class="panel breakdown" id="breakdown" hidden>
+<h2>Расшифровка</h2><p class="muted table-subtitle">Вес на 1–20 повторений</p>
+<table><caption class="visually-hidden">Расчётный вес для каждого количества повторений</caption><thead><tr><th scope="col">Повторы</th><th scope="col">Вес, кг</th></tr></thead><tbody id="table-body"></tbody></table>
+<p class="table-hint" id="table-hint" hidden>Твой подход — вне диапазона таблицы.</p>
+</section>
+<details class="panel formula"><summary><span>Как считается максимум</span><span class="plus" aria-hidden="true">+</span></summary>
+<p class="equation">Вес × (1 + повторы / 30)</p><p class="muted">Формула Эпли даёт приблизительную оценку. Фактический максимум зависит от техники и самочувствия. При работе с большими весами используй страховку.</p>
+<p class="muted">Первая строка таблицы — рассчитанный максимум. Для 2–20 повторений вес рассчитан по обратной формуле.</p>
+</details>
+<footer><p>Бесплатно · Без рекламы · Без регистрации</p><p class="offline-state" id="offline-state" role="status">Данные расчёта остаются на устройстве</p></footer>
+<noscript><p class="panel">Для расчёта включи JavaScript в браузере.</p></noscript>
+</main>
+<dialog class="install-dialog" id="install-dialog" aria-labelledby="install-title">
+<div class="dialog-heading"><h2 id="install-title">Saturn Жим на iPhone</h2><button id="install-close" class="dialog-close" type="button" aria-label="Закрыть инструкцию">×</button></div>
+<p class="muted">Добавь иконку на главный экран, чтобы открывать калькулятор как приложение.</p>
+<ol><li>Открой эту страницу в <strong>Safari</strong>.</li><li>В меню <strong>«Поделиться»</strong> выбери <strong>«На экран “Домой”»</strong>.</li><li>Если есть переключатель <strong>«Открывать как веб-приложение»</strong>, включи его. Нажми <strong>«Добавить»</strong>.</li></ol>
+<p class="muted">Если ссылка открылась внутри Telegram, сначала открой её в Safari.</p>
+<button class="calculate dialog-done" id="install-done" type="button">Понятно</button>
+</dialog>
+</body>
+</html>
+
